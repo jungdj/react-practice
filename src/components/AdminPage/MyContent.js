@@ -1,31 +1,33 @@
 import React from 'react';
+import { useState } from 'react';
 
 import { Layout, Button, Input } from 'antd';
 import { Table, Tag, Space } from 'antd';
 import { Modal } from 'antd';
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
+  if (props.editable) return null;
   return (
     <Layout style={{ flexDirection: 'row' }}>
       <label>Username:</label>
       <Input name="username" placeholder="username" />
-      <Button type="primary">Register</Button>
+      <Button type="primary" onClick={() => props.setVisible(true)}>Register</Button>
     </Layout>
   )
 }
 
 const EditButton = (props) => {
-  if (props.edit) {
+  if (props.editable) {
     return (
       <Layout style={{ flexDirection: 'row' }}>
-        <Button type={'primary'}>Confirm</Button>
-        <Button type={'primary'}>Cancel</Button>
+        <Button type={'primary'} onClick={() => props.setVisible(true)}>Confirm</Button>
+        <Button type={'primary'} onClick={() => props.setEditable(false)}>Cancel</Button>
       </Layout>
     )
   } else {
     return (
       <Layout style={{ flexDirection: 'row' }}>
-        <Button type={'primary'}>Edit</Button>
+        <Button type={'primary'} onClick={() => props.setEditable(true)}>Edit</Button>
       </Layout>
     )
   }
@@ -111,19 +113,25 @@ const UserListTable = () => {
 }
 
 const MyContent = () => {
+  const [visible, setVisible] = useState (false);
+  const [editable, setEditable] = useState(false);
+
   return (
     <div>
       {/*<h1>Register Form</h1>*/}
-      <RegisterForm />
+      <RegisterForm editable={editable} setVisible={setVisible} />
       {/*<h1>Edit Button</h1>*/}
-      <EditButton />
+      <EditButton editable={editable} setEditable={setEditable} setVisible={setVisible} />
       {/*<h1>UserListTable</h1>*/}
       <UserListTable />
       <Modal
         title="Basic Modal"
-        visible={false}
-        // onOk={this.handleOk}
-        // onCancel={this.handleCancel}
+        visible={visible}
+        onOk={() => {
+          setEditable(false);
+          setVisible(false);
+        }}
+        onCancel={() => setVisible(false)}
       >
         <p>Some contents...</p>
         <p>Some contents...</p>
