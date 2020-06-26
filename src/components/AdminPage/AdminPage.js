@@ -1,9 +1,11 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import MyContent from './MyContent';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
+
 
 const AdminPage = () => (
   <Layout
@@ -60,7 +62,7 @@ const AdminPage = () => (
             background: '#fff',
           }}
         >
-          Content
+          <MyContent />
         </Content>
       </Layout>
     </Layout>
