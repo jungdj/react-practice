@@ -1,11 +1,11 @@
 import React from 'react';
-import EventHandler from './components/EventHandler';
 import 'antd/dist/antd.css';
+import AdminPage from './components/AdminPage/AdminPage';
 
 function App() {
   return (
     <div>
-      <EventHandler />
+      <AdminPage />
     </div>
   );
 }
