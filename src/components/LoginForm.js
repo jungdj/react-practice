@@ -7,12 +7,8 @@ import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 const LoginForm = (props) => {
     const onFinish = values => {
         console.log('Received values of form: ', values);
+        props.showModal('로그인 되었습니다.')
     };
-
-    const test = (e) => {
-        e.preventDefault()
-        console.log('asdfasdf')
-    }
 
     return (
         <Form

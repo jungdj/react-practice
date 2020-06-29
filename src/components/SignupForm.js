@@ -8,6 +8,7 @@ import '../App.css'
 const SignupForm = (props) => {
     const onFinish = values => {
         console.log('Received values of form: ', values);
+        props.showModal('회원가입이 완료됐습니다. 로그인을 해주세요.')
     };
 
     return (
