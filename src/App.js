@@ -1,12 +1,14 @@
 import React from 'react';
-import EventHandler from './components/EventHandler';
 
 import 'antd/dist/antd.css'
+import './App.css'
+
+import MainPage from "./components/MainPage";
 
 function App() {
   return (
     <div>
-      <EventHandler />
+      <MainPage />
     </div>
   );
 }
